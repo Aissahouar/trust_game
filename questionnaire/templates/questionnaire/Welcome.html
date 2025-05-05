@@ -1,0 +1,19 @@
+{{ block title }}
+    Bienvenue
+{{ endblock }}
+
+{{ block content }}
+    <div class="card">
+        <div class="card-body">
+            <h2>Bonjour {{ player.player_name }} !</h2>
+            <p>
+                Merci de participer à notre étude sur l'intelligence artificielle.
+            </p>
+            <p>
+                Vous allez maintenant répondre à plusieurs questions concernant votre perception de l'IA.
+            </p>
+            
+            {{ next_button }}
+        </div>
+    </div>
+{{ endblock }}

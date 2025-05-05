@@ -1,0 +1,61 @@
+{{ block title }} Décision 1 - Gains potentiels {{ endblock }} {{ block content
+}}
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Décision 1 : Gains potentiels</h3>
+
+    <div>
+      <p> disposez d’un capital de 10 jetons que vous pouvez conserver
+      intégralement ou investir partiellement ou intégralement dans un placement
+      risqué qui vous offre 1 chance sur 2 de gagner 3 fois le montant investi
+      contre 1 chance sur 2 de perdre cet investissement.</p>
+      
+      <p>Exemple : si vous
+      choisissez d’investir 4 jetons, vous êtes certain d’en conserver au moins
+      6, et cela vous donne 1 chance sur deux d’en gagner 12 (4x3)
+      supplémentaires contre 1 chance sur 2 de perdre ces 4 jetons.
+      Au total, cet investissement vous donne 1 chance sur 2 de gagner 6+12 = 18 jetons
+      contre 1 chance sur 2 de ne gagner que les 6 jetons qui n’ont pas été
+      investis.</p>
+      
+      <p>Parmi les 6 options qui vous sont proposées, il vous sera
+      possible d’investir 0, 2, 4, 6, 8 ou 10 jetons dans l’investissement
+      risqué.À vous de choisir celle que vous préférez.</p>
+      
+      <p>Votre choix pour la
+      présente décision pourra être désigné au hasard, à la fin de l’expérience,
+      et l’option correspondante sera jouée pour déterminer votre rémunération.</p>
+    </div>
+
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>Option</th>
+          <th>Description</th>
+          <th>Votre choix</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for option, lottery in lotteries.items %}
+        <tr>
+          <td><strong>{{ option }}</strong></td>
+          <td>{{ lottery.description }}</td>
+          <td class="text-center">
+            <input
+              type="radio"
+              name="decision_1"
+              value="{{ option }}"
+              required
+            />
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="form-group">{{ formfields }}</div>
+
+    <div class="text-center mt-4">{{ next_button }}</div>
+  </div>
+</div>
+{{ endblock }}

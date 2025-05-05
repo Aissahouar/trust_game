@@ -1,0 +1,30 @@
+{{ extends 'global/Page.html' }}
+{{ block title }}Tirage au Sort{{ endblock }}
+
+{{ block content }}
+
+<div class="card">
+    <div class="card-body">
+        <h4>Tirage au Sort</h4>
+        <p>
+            Vous avez pris les décisions suivantes :
+        </p>
+        <ul>
+            <li>Décision 1: {{ player.decision_1 }}</li>
+            <li>Décision 2: {{ player.decision_2 }}</li>
+            <li>Décision 3: {{ player.decision_3 }}</li>
+            <li>Décision 4: {{ player.decision_4 }}</li>
+        </ul>
+        
+        <p>
+            Une de ces décisions va maintenant être sélectionnée au hasard pour déterminer votre paiement.
+        </p>
+        <p>
+            Cliquez sur "Suivant" pour procéder au tirage.
+        </p>
+    </div>
+</div>
+
+{{ next_button }}
+
+{{ endblock }}

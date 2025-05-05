@@ -1,0 +1,10 @@
+{% extends "global/Page.html" %}
+{% block content %}
+<h3>Instructions du Jeu de Confiance</h3>
+<p>Vous allez participer à un jeu de confiance à deux joueurs.</p>
+<p>Le joueur A reçoit {{C.ENDOWMENT}} unités et peut en envoyer une partie au joueur B.</p>
+<p>La somme envoyée est triplée. Ensuite, le joueur B décide combien il renvoie au joueur A.</p>
+<p>Un tour de test sera réalisé pour se familiariser avec le jeu.</p>
+<p>Appuyez sur "Suivant" pour commencer le test.</p>
+{{ next_button }}
+{% endblock %}

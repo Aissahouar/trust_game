@@ -1,0 +1,60 @@
+{% extends "global/Page.html" %}
+{% block content %}
+
+<h3>Décision du joueur A</h3>
+<p>Vous avez {{ C.ENDOWMENT }} unités. Combien souhaitez-vous envoyer au joueur B ?</p>
+
+{{ formfields }}
+
+<hr>
+<h4> Assistant IA – Conseiller de confiance</h4>
+
+<div id="chatbox" style="border:1px solid #ccc; padding:10px; height:250px; overflow-y:auto; margin-bottom:10px;">
+  <em>Assistant : Bonjour ! Posez-moi une question si vous avez besoin d'aide pour prendre votre décision.</em>
+</div>
+
+<input type="text" id="chat_input" placeholder="Posez votre question ici..." style="width:80%">
+<button type="button" onclick="sendChat()">Envoyer</button>
+
+<script>
+    async function sendChat() {
+        let input = document.getElementById("chat_input");
+        let message = input.value;
+        if (!message) return;
+
+        let chatbox = document.getElementById("chatbox");
+        chatbox.innerHTML += "<br><strong>Vous :</strong> " + message;
+        input.value = "";
+
+        const system_prompt = "Tu es un assistant IA dans un jeu de confiance. Aide le joueur à prendre une décision raisonnable, claire et courte.";
+
+        try {
+            const res = await fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer cle chatgpt"  
+                },
+                body: JSON.stringify({
+                    model: "gpt-o4-mini",
+                    messages: [
+                        { role: "system", content: system_prompt },
+                        { role: "user", content: message }
+                    ]
+                })
+            });
+
+            const data = await res.json();
+            const reply = data.choices[0].message.content;
+
+            chatbox.innerHTML += "<br><strong>Assistant :</strong> " + reply;
+            chatbox.scrollTop = chatbox.scrollHeight;
+        } catch (error) {
+            chatbox.innerHTML += "<br><strong style='color:red;'>Erreur :</strong> Impossible de contacter l'assistant.";
+        }
+    }
+</script>
+
+{{ next_button }}
+
+{% endblock %}

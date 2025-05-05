@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% block content %}
+
+{% if is_test_round %}
+    <h3>Résultats du tour de test</h3>
+    <p><em>Ce tour était un test pour vous familiariser avec le jeu. Aucun gain réel n’est associé à ce tour.</em></p>
+{% else %}
+    <h3>Résultats du jeu réel</h3>
+{% endif %}
+
+<p>Le joueur A a envoyé {{ sent }} unités (triplées à {{ tripled }}).</p>
+<p>Le joueur B a renvoyé {{ sent_back }} unités.</p>
+<p>Votre gain est : {{ payoff }}</p>
+{{next_button}}
+
+{% endblock %}

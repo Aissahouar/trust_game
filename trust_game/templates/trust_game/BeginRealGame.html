@@ -1,0 +1,9 @@
+{% extends "global/Page.html" %}
+{% block content %}
+<h3>Fin du tour de test</h3>
+<p>Merci {{ name }} d’avoir complété le tour d’essai.</p>
+<p>Vous allez maintenant passer au jeu réel. Cliquez sur le bouton ci-dessous pour commencer.</p>
+<form method="post">
+    <button class="btn btn-primary">Commencer le jeu réel</button>
+</form>
+{% endblock %}
