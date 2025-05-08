@@ -4,6 +4,12 @@ from os import environ
 SESSION_CONFIGS = [
     
     dict(
+    name='experiment_randomized',
+    display_name="Expérience randomisée par groupe",
+    num_demo_participants=60,
+    app_sequence=['dispatcher', 'questionnaire', 'trust_game', 'risk_aversion'],
+    ),
+    dict(
         name='risk_aversion',
         display_name="Mesure d'aversion au risque",
         num_demo_participants=1,
@@ -64,4 +70,4 @@ Here are some oTree games.
 
 SECRET_KEY = '9819358673787'
 
-INSTALLED_APPS = ['otree']
+INSTALLED_APPS = ['otree','dispatcher']

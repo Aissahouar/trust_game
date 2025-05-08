@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% block content %}
+<h3>Bienvenue dans l'expérience</h3>
+
+<p>Vous êtes dans le <strong>groupe {{ group_number }}</strong>.</p>
+
+<p>Vous allez réaliser les étapes suivantes dans cet ordre :</p>
+<ol>
+  {% for app in app_order %}
+    <li>{{ app }}</li>
+  {% endfor %}
+</ol>
+
+<p>Veuillez patienter un instant...</p>
+{% endblock %}
